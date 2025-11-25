@@ -91,39 +91,35 @@ function App() {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-container">
-          <h1 className="hero-title">Alege destinația și tipul de muncă</h1>
+          <h1 className="hero-title">Găsește jobul perfect</h1>
           
           <div className="job-filters">
             <div className="filter-group">
               <label>Țară</label>
-              <div className="country-buttons">
+              <select 
+                className="filter-select"
+                value={selectedCountry}
+                onChange={(e) => setSelectedCountry(e.target.value)}
+              >
+                <option value="">Toate țările</option>
                 {countries.map(country => (
-                  <button
-                    key={country}
-                    type="button"
-                    className={`country-btn ${selectedCountry === country ? 'active' : ''}`}
-                    onClick={() => setSelectedCountry(country)}
-                  >
-                    {country}
-                  </button>
+                  <option key={country} value={country}>{country}</option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <div className="filter-group">
               <label>Sector</label>
-              <div className="sector-buttons">
+              <select 
+                className="filter-select"
+                value={selectedSector}
+                onChange={(e) => setSelectedSector(e.target.value)}
+              >
+                <option value="">Toate sectoarele</option>
                 {sectors.map(sector => (
-                  <button
-                    key={sector}
-                    type="button"
-                    className={`sector-btn ${selectedSector === sector ? 'active' : ''}`}
-                    onClick={() => setSelectedSector(sector)}
-                  >
-                    {sector}
-                  </button>
+                  <option key={sector} value={sector}>{sector}</option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <button className="search-jobs-btn" onClick={handleSearchJobs}>
